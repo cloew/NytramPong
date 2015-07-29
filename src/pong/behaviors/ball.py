@@ -19,7 +19,7 @@ class Ball:
         
         x = random.choice(directions)*random.choice(posOrNeg)
         y = random.choice(directions)*random.choice(posOrNeg)
-        return Vec2(x, y)
+        return Vec2(x, y).unitVector
         
     @property
     def body(self):

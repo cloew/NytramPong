@@ -8,6 +8,11 @@ class Ball:
     
     def start(self):
         """ Start the body """
+        self.reset()
+        
+    def reset(self):
+        """ Reset the ball to its proper game starting position """
+        self.needsToMove = True
         self.movement.direction = self.getInitialDirection()
         
     def getInitialDirection(self):
@@ -18,6 +23,17 @@ class Ball:
         x = random.choice(directions)*random.choice(posOrNeg)
         y = random.choice(directions)*random.choice(posOrNeg)
         return Vec2(x, y).unitVector
+        
+    def update(self):
+        """ Update the ball """
+        if self.needsToMove:
+            self.position.assign(x=0, y=0)
+            self.needsToMove = False
+    
+    @property
+    def position(self):
+        """ Return the position for the ball """
+        return self.entity.transform.position
         
     @property
     def movement(self):

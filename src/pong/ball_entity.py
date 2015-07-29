@@ -1,10 +1,12 @@
 from .shaders import ShaderProgram
 from .behaviors.ball import Ball
+from .collisions import Collidables
 
 from nytram.entity import Entity
 from nytram.renderers import EntityRenderer
 from nytram.ext.box2d import Body, Fixture, BodyTypes, Box
 from nytram.ext.box2d.movement import DirectionalMovement, InstantVelocity
+from nytram.ext.box2d.collisions import Collider, CollisionRegistration
 
 class BallEntity:
     """ Helper to load the Ball Entity """
@@ -22,8 +24,7 @@ class BallEntity:
         fixture = Fixture(Box(1, 1), density=1, restitution=1, friction=0, isSensor=False)
         entity.body = Body([fixture], bodyType=BodyTypes.Dynamic, fixedRotation=True)
         entity.transform.position = position
-        # entity.movement = DirectionalMovement([0,1], InstantVelocity(3))
+        entity.collider = Collider([fixture], {CollisionRegistration(Collidables.Ball, Collidables.Wall, actsAs=Collidables.Ball)})
+        entity.movement = DirectionalMovement([0,1], InstantVelocity(5))
         entity.ball = Ball()
         return entity
-        
-# BallEntity.loadRenderer()

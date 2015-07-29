@@ -8,9 +8,7 @@ class Ball:
     
     def start(self):
         """ Start the body """
-        direction = self.getInitialDirection()
-        speed = InstantVelocity(5)
-        speed.apply(self.body, direction)
+        self.movement.direction = self.getInitialDirection()
         
     def getInitialDirection(self):
         """ Return the initial direction for the Ball """
@@ -22,6 +20,6 @@ class Ball:
         return Vec2(x, y).unitVector
         
     @property
-    def body(self):
-        """ Return the body the ball is connected to """
-        return self.entity.body
+    def movement(self):
+        """ Return the movement for the ball """
+        return self.entity.movement

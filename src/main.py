@@ -1,9 +1,11 @@
 from pong import BallEntity, Wall
+from pong.collisions import BallAndWall
 
 from nytram import Application, Window
 from nytram.entity import Scene
 from nytram.entity.camera import Camera, OrthoProjection
 from nytram.ext.box2d import World, Vec2
+from nytram.ext.box2d.collisions import CollisionManager
 
 import sys
 
@@ -14,6 +16,7 @@ def main(args):
     
     scene = Scene(app)
     scene.world = World(gravity=Vec2(0, 0))
+    scene.collisionManager = CollisionManager([BallAndWall])
     
     Wall.loadRenderer()
     BallEntity.loadRenderer()

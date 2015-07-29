@@ -1,5 +1,5 @@
-from pong import BallEntity, Wall
-from pong.collisions import BallAndWall
+from pong import BallEntity, GoalEntity, Wall
+from pong.collisions import BallAndGoal, BallAndWall
 
 from nytram import Application, Window
 from nytram.entity import Scene
@@ -16,7 +16,7 @@ def main(args):
     
     scene = Scene(app)
     scene.world = World(gravity=Vec2(0, 0))
-    scene.collisionManager = CollisionManager([BallAndWall])
+    scene.collisionManager = CollisionManager([BallAndGoal, BallAndWall])
     
     Wall.loadRenderer()
     BallEntity.loadRenderer()
@@ -24,6 +24,8 @@ def main(args):
     bottomWall = Wall.build(scene, [0, -10])
     topWall = Wall.build(scene, [0, 10])
     ball = BallEntity.build(scene, [0, 0])
+    leftGoal = GoalEntity.build(scene, [-13.5, 0])
+    rightGoal = GoalEntity.build(scene, [13.5, 0])
     
     projection = OrthoProjection(width=30, height=20)
     camera = Camera(eye=[0.0, 0.0, 10.0], projection=projection)

@@ -24,7 +24,8 @@ class BallEntity:
         fixture = Fixture(Box(1, 1), density=1, restitution=1, friction=0, isSensor=False)
         entity.body = Body([fixture], bodyType=BodyTypes.Dynamic, fixedRotation=True)
         entity.transform.position = position
-        entity.collider = Collider([fixture], {CollisionRegistration(Collidables.Ball, Collidables.Wall, actsAs=Collidables.Ball)})
+        entity.collider = Collider([fixture], {CollisionRegistration(Collidables.Ball, Collidables.Wall, actsAs=Collidables.Ball),
+                                               CollisionRegistration(Collidables.Ball, Collidables.Goal, actsAs=Collidables.Ball)})
         entity.movement = DirectionalMovement([0,1], InstantVelocity(5))
         entity.ball = Ball()
         return entity

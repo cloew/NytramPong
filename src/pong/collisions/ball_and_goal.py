@@ -6,3 +6,4 @@ from nytram.ext.box2d.collisions import Collision
 def BallAndGoal(ball, goal):
     """ Handles collisions between the ball and goal """
     print("Ball is in the goal!")
+    goal.goal.team.score()

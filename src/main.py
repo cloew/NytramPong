@@ -1,4 +1,4 @@
-from pong import BallEntity, GoalEntity, Wall
+from pong import BallEntity, GoalEntity, Team, Wall
 from pong.collisions import BallAndGoal, BallAndWall
 
 from nytram import Application, Window
@@ -21,16 +21,22 @@ def main(args):
     Wall.loadRenderer()
     BallEntity.loadRenderer()
     
+    leftTeam = Team("Left", app)
+    rightTeam = Team("Right", app)
+    
     bottomWall = Wall.build(scene, [0, -10])
     topWall = Wall.build(scene, [0, 10])
     ball = BallEntity.build(scene, [0, 0])
-    leftGoal = GoalEntity.build(scene, [-13.5, 0])
-    rightGoal = GoalEntity.build(scene, [13.5, 0])
+    leftGoal = GoalEntity.build(scene, [-13.5, 0], rightTeam)
+    rightGoal = GoalEntity.build(scene, [13.5, 0], leftTeam)
     
     projection = OrthoProjection(width=30, height=20)
     camera = Camera(eye=[0.0, 0.0, 10.0], projection=projection)
     
     app.run()
+    
+    print("Left Team:", leftTeam.points)
+    print("Right Team:", rightTeam.points)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

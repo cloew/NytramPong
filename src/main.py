@@ -1,4 +1,4 @@
-from pong import Wall
+from pong import BallEntity, Wall
 
 from nytram import Application, Window
 from nytram.entity import Scene
@@ -17,6 +17,7 @@ def main(args):
     
     bottomWall = Wall.build(scene, [0, -10])
     topWall = Wall.build(scene, [0, 10])
+    ball = BallEntity.build(scene, [0, 0])
     
     projection = OrthoProjection(width=20, height=20)
     camera = Camera(eye=[0.0, 0.0, 10.0], projection=projection)

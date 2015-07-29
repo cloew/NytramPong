@@ -19,7 +19,7 @@ class BallEntity:
     def build(cls, scene, position):
         """ Build the Entity """
         entity = Entity(scene, renderer=cls.renderer)
-        fixture = Fixture(Box(2, 2), density=1, restitution=1, isSensor=False, userData=1)
+        fixture = Fixture(Box(1, 1), density=1, restitution=1, isSensor=False, userData=1)
         entity.body = Body([fixture], bodyType=BodyTypes.Dynamic, fixedRotation=True)
         entity.transform.position = position
         # entity.movement = DirectionalMovement([0,1], InstantVelocity(3))

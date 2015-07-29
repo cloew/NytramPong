@@ -11,13 +11,13 @@ class Wall:
     @classmethod
     def loadRenderer(cls):
         """ Load the renderer """
-        cls.renderer = EntityRenderer(ShaderProgram, elements=[0,2,1,3,0,1], vertexData={0:[10, 1, 0, -10, -1, 0, 10, -1, 0, -10, 1, 0]})
+        cls.renderer = EntityRenderer(ShaderProgram, elements=[0,2,1,3,0,1], vertexData={0:[15, 1, 0, -15, -1, 0, 15, -1, 0, -15, 1, 0]})
     
     @classmethod
     def build(cls, scene, position):
         """ Build the Entity """
         entity = Entity(scene, renderer=cls.renderer)
-        fixture = Fixture(Box(20, 2), density=1, restitution=0, isSensor=False, userData=1)
+        fixture = Fixture(Box(30, 2), density=1, restitution=0, isSensor=False, userData=1)
         entity.body = Body([fixture], bodyType=BodyTypes.Static, fixedRotation=True)
         entity.transform.position = position
         return entity

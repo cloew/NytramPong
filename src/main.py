@@ -9,7 +9,7 @@ import sys
 
 def main(args):
     """ Run the main file """
-    window = Window(width=400, height=400, title="Pong")
+    window = Window(width=600, height=400, title="Pong")
     app = Application(window=window)
     
     scene = Scene(app)
@@ -22,7 +22,7 @@ def main(args):
     topWall = Wall.build(scene, [0, 10])
     ball = BallEntity.build(scene, [0, 0])
     
-    projection = OrthoProjection(width=20, height=20)
+    projection = OrthoProjection(width=30, height=20)
     camera = Camera(eye=[0.0, 0.0, 10.0], projection=projection)
     
     app.run()

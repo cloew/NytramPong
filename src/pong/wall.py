@@ -22,4 +22,4 @@ class Wall:
         entity.transform.position = position
         return entity
         
-Wall.loadRenderer()
+# Wall.loadRenderer()

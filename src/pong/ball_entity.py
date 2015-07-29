@@ -1,4 +1,5 @@
 from .shaders import ShaderProgram
+from .behaviors.ball import Ball
 
 from nytram.entity import Entity
 from nytram.renderers import EntityRenderer
@@ -21,7 +22,8 @@ class BallEntity:
         fixture = Fixture(Box(2, 2), density=1, restitution=1, isSensor=False, userData=1)
         entity.body = Body([fixture], bodyType=BodyTypes.Dynamic, fixedRotation=True)
         entity.transform.position = position
-        entity.movement = DirectionalMovement([0,1], InstantVelocity(3))
+        # entity.movement = DirectionalMovement([0,1], InstantVelocity(3))
+        entity.ball = Ball()
         return entity
         
-BallEntity.loadRenderer()
+# BallEntity.loadRenderer()

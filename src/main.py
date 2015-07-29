@@ -15,6 +15,9 @@ def main(args):
     scene = Scene(app)
     scene.world = World(gravity=Vec2(0, 0))
     
+    Wall.loadRenderer()
+    BallEntity.loadRenderer()
+    
     bottomWall = Wall.build(scene, [0, -10])
     topWall = Wall.build(scene, [0, 10])
     ball = BallEntity.build(scene, [0, 0])

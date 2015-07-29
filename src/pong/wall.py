@@ -17,7 +17,7 @@ class Wall:
     def build(cls, scene, position):
         """ Build the Entity """
         entity = Entity(scene, renderer=cls.renderer)
-        fixture = Fixture(Box(30, 2), density=1, restitution=0, isSensor=False, userData=1)
+        fixture = Fixture(Box(30, 2), density=1, restitution=0, friction=0, isSensor=False)
         entity.body = Body([fixture], bodyType=BodyTypes.Static, fixedRotation=True)
         entity.transform.position = position
         return entity

@@ -13,7 +13,10 @@ class Ball:
     def reset(self):
         """ Reset the ball to its proper game starting position """
         self.needsToMove = True
-        self.movement.direction = self.getInitialDirection()
+        # self.movement.direction = self.getInitialDirection()
+        
+        velocity = InstantVelocity(self.movement.speed)
+        velocity.apply(self.body, self.getInitialDirection())
         
     def getInitialDirection(self):
         """ Return the initial direction for the Ball """
@@ -29,13 +32,18 @@ class Ball:
         if self.needsToMove:
             self.position.assign(x=0, y=0)
             self.needsToMove = False
-    
+        
     @property
-    def position(self):
-        """ Return the position for the ball """
-        return self.entity.transform.position
+    def body(self):
+        """ Return the body for the ball """
+        return self.entity.body
         
     @property
     def movement(self):
         """ Return the movement for the ball """
         return self.entity.movement
+    
+    @property
+    def position(self):
+        """ Return the position for the ball """
+        return self.entity.transform.position

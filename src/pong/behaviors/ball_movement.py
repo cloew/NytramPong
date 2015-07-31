@@ -5,6 +5,11 @@ class BallMovement:
     def __init__(self, speed):
         """ Initialize with the speed """
         self.speed = speed
+        self.initialSpeed = speed
+        
+    def reset(self):
+        """ Reset the ball movement to the initial speed """
+        self.speed = self.initialSpeed
         
     def update(self):
         """ Update the ball """

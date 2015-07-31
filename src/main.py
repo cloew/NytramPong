@@ -4,6 +4,7 @@ from pong.collisions import BallAndGoal, BallAndWall
 from nytram import Application, Window
 from nytram.entity import Scene
 from nytram.entity.camera import Camera, OrthoProjection
+from nytram.input import Keys
 from nytram.ext.box2d import World, Vec2
 from nytram.ext.box2d.collisions import CollisionManager
 
@@ -28,10 +29,10 @@ def main(args):
     bottomWall = Wall.build(scene, [0, -10])
     topWall = Wall.build(scene, [0, 10])
     ball = BallEntity.build(scene, [0, 0])
-    leftPaddle = Paddle.build(scene, [-12, 0])
-    rightPaddle = Paddle.build(scene, [12, 0])
-    leftGoal = GoalEntity.build(scene, [-13.5, 0], rightTeam)
-    rightGoal = GoalEntity.build(scene, [13.5, 0], leftTeam)
+    leftPaddle = Paddle.build(scene, [-12, 0], Keys.W, Keys.S)
+    rightPaddle = Paddle.build(scene, [12, 0], Keys.Up, Keys.Down)
+    leftGoal = GoalEntity.build(scene, [-14, 0], rightTeam)
+    rightGoal = GoalEntity.build(scene, [14, 0], leftTeam)
     
     projection = OrthoProjection(width=30, height=20)
     camera = Camera(eye=[0.0, 0.0, 10.0], projection=projection)

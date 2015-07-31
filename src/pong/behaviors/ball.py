@@ -13,7 +13,6 @@ class Ball:
     def reset(self):
         """ Reset the ball to its proper game starting position """
         self.needsToMove = True
-        # self.movement.direction = self.getInitialDirection()
         
         velocity = InstantVelocity(self.movement.speed)
         velocity.apply(self.body, self.getInitialDirection())
